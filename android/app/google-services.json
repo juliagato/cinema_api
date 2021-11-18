@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "977900037118",
+    "project_id": "sookie-54f94",
+    "storage_bucket": "sookie-54f94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977900037118:android:c1ac4d376aae68bf8696af",
+        "android_client_info": {
+          "package_name": "com.example.cinema_api"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "977900037118-fbbeugev8oo9cr0ds925u0g4crd411pq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBykG37cf1Sn1gKwjM2mUWAiZVW7gi_TM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977900037118-fbbeugev8oo9cr0ds925u0g4crd411pq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
