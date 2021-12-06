@@ -36,7 +36,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //List favoritos = [];
   List favoritos = [];
   var dbfb = FirebaseFirestore.instance;
   late StreamSubscription<QuerySnapshot> strSubPalavra;
@@ -84,11 +83,10 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.black),
       ),
-      body: ListView(
+      body:  ListView(
         children: [
-          Favoritos(likesList: favoritos),
+          Favoritos(likesList: favoritos)
         ],
-      ),
-    );
+    ));
   }
 }
