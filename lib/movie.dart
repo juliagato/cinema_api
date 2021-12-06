@@ -1,5 +1,5 @@
 // ignore_for_file: unused_import, import_of_legacy_library_into_null_safe, prefer_final_fields, prefer_const_constructors
-
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -28,11 +28,13 @@ class _MyMovieState extends State<MyMovie> {
   String _poster = "";
   String _atores = "";
   String _nota = "";
+  bool liked = false;
   List _similares = [];
   final apiKey = '4b1780ead5381b8451622529f1069939';
   final accessToken =
       'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YjE3ODBlYWQ1MzgxYjg0NTE2MjI1MjlmMTA2OTkzOSIsInN1YiI6IjYxODVhZGIxM2ZhYmEwMDAyYzQ1ODlmMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.c_t2SlVtPlKu7ac95EWMjIDYyl8rNjF44o6AP0T8Vm0';
 
+  late StreamSubscription<QuerySnapshot> strSubPalavra;
   @override
   void initState() {
     _recuperar();
@@ -60,6 +62,16 @@ class _MyMovieState extends State<MyMovie> {
 
       if (i == 10) i == credits["cast"].length + 1;
     }
+    strSubPalavra = dbfb
+        .collection("liked")
+        .where("id", isEqualTo: widget.id)
+        .snapshots()
+        .listen((snapshot) {
+      int fav = snapshot.docs.length;
+      setState(() {
+        liked = fav == 0 ? false : true;
+      });
+    });
 
     setState(() {
       _titulo = details["title"];
@@ -157,11 +169,18 @@ class _MyMovieState extends State<MyMovie> {
                           },
                           style: TextButton.styleFrom(
                             primary: Colors.white,
-                            backgroundColor: Colors.lightBlueAccent[400],
+                            //backgroundColor: Colors.pinkAccent[50],
                           ),
-                          child: const Text(
-                            "  Gravar  ",
-                            style: TextStyle(fontSize: 20.0),
+                          // child: const Text(
+                          //   "  Gravar  ",
+                          //   style: TextStyle(fontSize: 20.0),
+                          // )),
+                          child: Icon(
+                            !liked
+                                ? Icons.favorite_border_outlined
+                                : Icons.favorite,
+                            color: Colors.pink,
+                            size: 24.0,
                           )),
                     ]))
               ]),
