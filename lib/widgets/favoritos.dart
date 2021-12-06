@@ -26,12 +26,12 @@ class Favoritos extends StatelessWidget {
               height: 10,
             ),
             Container(
-              height: 250,
-              child: ListView.builder(
-                  itemCount: likesList.length,
-                  scrollDirection: Axis.vertical,
-                  itemBuilder: (context, index) {
-                    return InkWell(
+              height: 600,
+              child: GridView.count(
+              crossAxisCount: 2,
+              children: List.generate(likesList.length, (index) {
+                  return Center(
+                   child: InkWell(
                       onTap: () {
                         Navigator.push(
                           context,
@@ -45,7 +45,7 @@ class Favoritos extends StatelessWidget {
                         child: Column(
                           children: [
                             Container(
-                              height: 200,
+                              height: 160,
                               decoration: BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(9.5)),
@@ -61,10 +61,10 @@ class Favoritos extends StatelessWidget {
                           ],
                         ),
                       ),
-                    );
+                  ));
                   }),
             ),
-          ],
+            )],
         ));
   }
 }
