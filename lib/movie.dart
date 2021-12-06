@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:cinema_api/widgets/relacionados.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class MyMovie extends StatefulWidget {
   final int id;
 
@@ -16,6 +18,9 @@ class MyMovie extends StatefulWidget {
 }
 
 class _MyMovieState extends State<MyMovie> {
+  //PASSO 2 - INSTANCIAR O BANCO FIREBASE
+  var dbfb = FirebaseFirestore.instance;
+
   String _titulo = "";
   String _sinopse = "";
   String _lancamento = "";
@@ -142,7 +147,22 @@ class _MyMovieState extends State<MyMovie> {
                                     fontWeight: FontWeight.bold, fontSize: 13)),
                           ],
                         ),
-                      )
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            dbfb.collection("liked").add({
+                              "id": widget.id,
+                              "poster_path": _poster,
+                            });
+                          },
+                          style: TextButton.styleFrom(
+                            primary: Colors.white,
+                            backgroundColor: Colors.lightBlueAccent[400],
+                          ),
+                          child: const Text(
+                            "  Gravar  ",
+                            style: TextStyle(fontSize: 20.0),
+                          )),
                     ]))
               ]),
           SizedBox(

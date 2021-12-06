@@ -6,6 +6,7 @@ import 'widgets/trending.dart';
 import 'package:flutter/material.dart';
 import 'movie.dart';
 import 'sobre.dart';
+import 'liked.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'dart:ui' show lerpDouble;
 
@@ -90,6 +91,18 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => CinemaApi()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.favorite),
+              title: Text("Minha lista"),
+              subtitle: Text("Confira os seus curtidos"),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Liked()),
                 );
               },
             ),
