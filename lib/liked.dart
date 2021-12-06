@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:cinema_api/widgets/favoritos.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'sobre.dart';
+import 'main.dart';
 //import 'package:tmdb_api/tmdb_api.dart';
 //import 'dart:ui' show lerpDouble;
 
@@ -82,6 +84,48 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.grey.shade500,
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.black),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("Início"),
+              subtitle: Text("Confira os filmes e catálogos"),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CinemaApi()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.favorite),
+              title: Text("Minha lista"),
+              subtitle: Text("Confira os seus curtidos"),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Liked()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.group),
+              title: Text("Sobre nós"),
+              subtitle: Text("Conheça o grupo"),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Sobre()),
+                );
+              },
+            )
+          ],
+        ),
       ),
       body:  ListView(
         children: [
